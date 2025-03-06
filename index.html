@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="GRaD-Nav: Learning Visual Drone Navigation with Gaussian Radiance Fields and Differentiable Dynamics">
+  <meta name="keywords" content="Reinforcement Learning, Differentibale Simulation, Visual Navigation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GRaD-Nav: Learning Visual Drone Navigation with Gaussian Radiance Fields and Differentiable Dynamics</title>
+
+
+    <!-- Thumbnail for social media sharing -->
+    <!-- <meta property="og:image" content="media/thumbnail.jpg"> -->
+
+    <!-- Favicon -->
+    <!-- <link rel="icon" href="media/thumbnail.jpg" type="image/jpeg"> -->
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+    </script>
+
+    <script>
+        function updateInTheWild() {
+            var task = document.getElementById("inthewild-video-menu").value;
+
+            console.log("updateInTheWild", task)
+
+            var video = document.getElementById("inthewild-video");
+            video.src = "media/videos/" +
+                task +
+                ".m4v"
+            video.play();
+        }
+
+        function updateBimanual() {
+            var task = document.getElementById("bimanual-video-menu").value;
+
+            console.log("updateBimanual", task)
+
+            var video = document.getElementById("bimanual-video");
+            video.src = "media/videos/1_" +
+                task +
+                ".mp4"
+            video.play();
+        }
+
+        function updateClothes() {
+            var task = document.getElementById("clothes-video-menu").value;
+
+            console.log("updateclothes", task)
+
+            var img = document.getElementById("clothes-img");
+            img.src = "media/fold-strategies/" +
+                task +
+                ".jpeg"
+
+            var video = document.getElementById("clothes-video");
+            video.src = "media/videos/fold-" +
+                task +
+                ".mp4"
+            video.play();
+        }
+    </script>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+
+    <link rel="stylesheet" href="./static/source_serif_4.css">
+    <link rel="stylesheet" href="./static/source_sans_3.css">
+    <link rel="stylesheet" href="./static/academicons.min.css">
+    <link rel="stylesheet" href="./static/fontawesome/css/fontawesome.css">
+    <link rel="stylesheet" href="./static/fontawesome/css/brands.css">
+    <link rel="stylesheet" href="./static/fontawesome/css/light.css">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/bulma-carousel.min.js"></script>
+    <script src="./static/js/bulma-slider.min.js"></script>
+    <script src="./static/js/index.js"></script>
+</head>
+
+<body onload="updateInTheWild();updateBimanual();">
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-fullhd">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">GRaD-Nav: Learning Visual Drone Navigation with Gaussian Radiance Fields and Differentiable Dynamics</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a target="_blank" href="">Anonymous Authors</a><sup>1</sup>
+                        </div>
+                        <div class="is-size-5 affiliation">
+                            <sup>1</sup>Anonymous Institutes
+                        </div>
+                        <br>
+                        <!-- <div class="affiliation-note">
+                            <sup>*</sup> indicates equal contributions
+                        </div> -->
+                        <div class="button-container">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-widescreen">
+            <div class="hero-body">
+                <div class="container">
+                    <div class="columns is-vcentered  is-centered">
+                        <video id="teaser" autoplay muted loop controls height="100%" width="100%">
+            <source src="media/videos/FAST_Splat.mp4"
+                    type="video/mp4">
+          </video>
+                        </br>
+                    </div>
+                    <br>
+                    <h2 class="subtitle has-text-centered">
+                    </h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="container is-max-widescreen">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Autonomous visual navigation is an essential ele-
+                            ment in robot autonomy. Reinforcement learning (RL) offers
+                            a promising policy training paradigm. However existing RL
+                            methods suffer from high sample complexity, poor sim-to-real
+                            transfer, and limited runtime adaptability to navigation scenar-
+                            ios not seen during training. These problems are particularly
+                            challenging for drones, with complex nonlinear and unstable
+                            dynamics, and strong dynamic coupling between control and
+                            perception. In this paper, we propose a novel framework that
+                            integrates 3D Gaussian Splatting (3DGS) with differentiable
+                            deep reinforcement learning (DDRL) to train vision-based
+                            drone navigation policies. By leveraging high-fidelity 3D scene
+                            representations and differentiable simulation, our method im-
+                            proves sample efficiency and sim-to-real transfer. Additionally,
+                            we incorporate a Context-aided Estimator Network (CENet)
+                            to adapt to environmental variations at runtime. Moreover,
+                            by curriculum training in a mixture of different surrounding
+                            environments, we achieve in-task generalization, the ability to
+                            solve new instances of a task not seen during training. Drone
+                            hardware experiments demonstrate our method's high training
+                            efficiency compared to state-of-the-art RL methods, zero shot
+                            sim-to-real transfer for real robot deployment without fine
+                            tuning, and ability to adapt to new instances within the same
+                            task class (e.g. to fly through a gate at different locations with
+                            different distractors in the environment).
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="rounded">
+            <div class="rows">
+                <h2 class="title is-3">Overview of GRaD-Nav</h2>
+                <div class="column1">
+                    <img src="media/figures/model_structure.png" alt="arch-imag" style="width:100%">
+                </div>
+                <p class="content has-text-justified">
+                    Our GRaD-Nav architecture combines a visual+dynamics context encoder (CENet) within an 
+                    Actor-Critic framework, trained end-to-end using a differentiable drone dynamics model 
+                    and 3D Gaussian Splatting scene representation for photo-realistic visuals at training time. 
+                    The policy transfers zero-shot to drone hardware and adapts to new navigation task instances at runtime.
+                </p>
+            </div>
+
+            <hr class="rounded">
+            <div class="rows">
+                <h2 class="title is-3">Results of FAST-Splat</h2>
+
+                <h4 class="title is-4">Scene Rendering</h4>
+                <div class="column1">
+                    <img src="media/figures/rgb_stats_trim.png" alt="arch-imag" style="width:100%">
+                </div>
+
+                <p class="content has-text-justified">
+                    RGB images rendered using each semantic Gaussian Splatting method. FAST-Splat achieves 18x to 75x faster rendering
+                    speeds with at least 3x lower memory usage, while achieving competitive (and in some cases, better) reconstruction
+                    quality.
+                </p>
+                
+                <h4 class="title is-4">Semantic Gaussian Splatting</h4>
+                <div class="column1">
+                    <img src="media/figures/seg_stats.png" alt="arch-imag" style="width:100%">
+                </div>
+                <p class="content has-text-justified">
+                    Semantic segmentation using each semantic Gaussian Splatting method. FAST-Splat achieves competitive performance
+                    compared to existing semantic Gaussian Splatting method, achieving the highest mIoU and accuracy scores in some scenes
+                    while being the next best-performing method in the remaining scenes.
+                </p>
+                <h4 class="title is-4">Semantic Disambiguation</h4>
+                <div class="column1">
+                    <img src="media/figures/semantic_disambiguation.png" alt="arch-imag" style="width:100%">
+                </div>
+                <p class="content has-text-justified">
+                    FAST-Splat resolves language ambiguity in user-provided natural-language queries in semantic object localization.
+                    FAST-Splat identifies the specific semantic class of each relevant object, e.g., a coffee machine and a kettle, when
+                    prompted with an ambiguous query, e.g., “coffee” and “cooking pot,” respectively. Likewise, FAST-Splat disambiguates
+                    between a “cup” and a vase and between a “fruit” and a pottedplant in the garden-like scene.
+                </p>
+
+                <h4 class="title is-4">Scene Editing</h4>
+                <div class="column1">
+                    <img src="media/figures/scene_editing_views_horizontal.png" alt="arch-imag" style="width:100%">
+                </div>
+                <p class="content has-text-justified">
+                    Like existing semantic Gaussian Splatting methods, FAST-Splat enables editing of Gaussian Splatting scenes. Here, we show color-editing of a coffee machine in a kitchen.
+                </p>
+                
+            </div>
+
+            <hr class="rounded">
+            <div class="rows">
+                <h2 class="title is-3">Generalization to Unseen Objects</h2>
+
+                <div class="columns">
+                    <div class="column has-text-centered">
+                        <div class="select is-rounded">
+                            <select id="bimanual-video-menu" onchange="updateBimanual()">
+          <option value="circle" selected="selected">Circle (Unseen)</option>
+          <option value="doublesquare">Double Square (Unseen)</option>
+          <option value="oval">Oval (Unseen)</option>
+          <option value="3prong">3prong (Unseen)</option>
+          <option value="hexagon">Hexagon (Seen)</option>
+          <option value="star">Star (Unseen)</option>
+          </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="columns">
+                    <div class="column has-text-centered">
+                        <p style="text-align:center;">
+                            <video id="bimanual-video" width="100%" height="100%" controls autoplay loop muted>
+            <source src="media/videos/1_circle.mp4" type="video/mp4">
+          </video>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+    </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="columns is-centered">
+                <div class="column">
+                    <div class="content has-text-centered">
+                        <p>
+                            Website template borrowed from <a href="https://nerfies.github.io">Nerfies</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
