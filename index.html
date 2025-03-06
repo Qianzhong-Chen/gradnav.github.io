@@ -117,18 +117,19 @@
     </section>
 
     <p class="buttons">
-        <a href="https://arxiv.org/abs/2401.13231" target="_blank">Paper</a>
-        <a href="https://twitter.com/vincesitzmann/status/1750571777091342624" target="_blank">Twitter</a>
-        <a href="https://github.com/suninghuang19/dittogym" target="_blank">DittoGym</a>
-        <a href="https://github.com/suninghuang19/cfp" target="_blank">CFP</a>
-        </p>
+        <a class="button is-primary" href="https://arxiv.org/abs/2401.13231" target="_blank">Paper</a>
+        <a class="button is-info" href="https://twitter.com/vincesitzmann/status/1750571777091342624" target="_blank">Twitter</a>
+        <a class="button is-link" href="https://github.com/suninghuang19/dittogym" target="_blank">DittoGym</a>
+        <a class="button is-dark" href="https://github.com/suninghuang19/cfp" target="_blank">CFP</a>
+    </p>
+    
 
     <section class="hero teaser">
         <div class="container is-max-widescreen">
             <div class="hero-body">
                 <div class="container">
                     <div class="columns is-vcentered  is-centered">
-                        <video id="teaser" autoplay muted loop controls height="100%" width="100%">
+                        <video id="teaser" muted loop controls height="100%" width="100%">
             <source src="media/videos/GRaD_Nav.mp4"
                     type="video/mp4">
           </video>
@@ -181,7 +182,7 @@
             <div class="rows">
                 <h2 class="title is-3">Overview of GRaD-Nav</h2>
                 <div class="column1">
-                    <img src="media/figures/model_structure.png" alt="arch-imag" style="width:100%">
+                    <img src="media/figures/model_structure.png" alt="arch-imag" style="width:70%">
                 </div>
                 <p class="content has-text-justified">
                     Our GRaD-Nav architecture combines a visual+dynamics context encoder (CENet) within an 
@@ -195,75 +196,51 @@
             <div class="rows">
                 <h2 class="title is-3">Results of FAST-Splat</h2>
 
-                <h4 class="title is-4">Scene Rendering</h4>
+                <h4 class="title is-4">Sample Efficiency</h4>
                 <div class="column1">
-                    <img src="media/figures/rgb_stats_trim.png" alt="arch-imag" style="width:100%">
+                    <img src="media/figures/algo_benchmark_smooth.png" alt="arch-imag" style="width:100%">
                 </div>
 
                 <p class="content has-text-justified">
-                    RGB images rendered using each semantic Gaussian Splatting method. FAST-Splat achieves 18x to 75x faster rendering
-                    speeds with at least 3x lower memory usage, while achieving competitive (and in some cases, better) reconstruction
-                    quality.
+                    Sample efficiency and wall-clock time comparison
+                    benchmark of different algorithms on drone's vision-based
+                    end-to-end navigation policy training.
                 </p>
                 
-                <h4 class="title is-4">Semantic Gaussian Splatting</h4>
+                <h4 class="title is-4">Long episode navigation results</h4>
                 <div class="column1">
-                    <img src="media/figures/seg_stats.png" alt="arch-imag" style="width:100%">
+                    <img src="media/figures/gs_traj_plot_archive.pdf" alt="arch-imag" style="width:100%">
                 </div>
                 <p class="content has-text-justified">
-                    Semantic segmentation using each semantic Gaussian Splatting method. FAST-Splat achieves competitive performance
-                    compared to existing semantic Gaussian Splatting method, achieving the highest mIoU and accuracy scores in some scenes
-                    while being the next best-performing method in the remaining scenes.
+                    Example success trajectories in hybrid simulation environments achieved by the proposed method. The left one is
+                    “middle gate” and the right one is “right gate”.
                 </p>
-                <h4 class="title is-4">Semantic Disambiguation</h4>
+                <h4 class="title is-4">Taks-level generalization ability</h4>
                 <div class="column1">
-                    <img src="media/figures/semantic_disambiguation.png" alt="arch-imag" style="width:100%">
+                    <img src="media/figures/gen_traj_plot_archive.pdf" alt="arch-imag" style="width:100%">
                 </div>
                 <p class="content has-text-justified">
-                    FAST-Splat resolves language ambiguity in user-provided natural-language queries in semantic object localization.
-                    FAST-Splat identifies the specific semantic class of each relevant object, e.g., a coffee machine and a kettle, when
-                    prompted with an ambiguous query, e.g., “coffee” and “cooking pot,” respectively. Likewise, FAST-Splat disambiguates
-                    between a “cup” and a vase and between a “fruit” and a pottedplant in the garden-like scene.
+                    Generalizable policy to fly through gates at different positions and with different distractor objects.
                 </p>
 
-                <h4 class="title is-4">Scene Editing</h4>
+                <h4 class="title is-4">Hardware experiments</h4>
                 <div class="column1">
-                    <img src="media/figures/scene_editing_views_horizontal.png" alt="arch-imag" style="width:100%">
+                    <img src="media/figures/composite_image.jpg" alt="arch-imag" style="width:100%">
                 </div>
                 <p class="content has-text-justified">
-                    Like existing semantic Gaussian Splatting methods, FAST-Splat enables editing of Gaussian Splatting scenes. Here, we show color-editing of a coffee machine in a kitchen.
+                    Robot hardware experiments of drone flying through middle gate.
                 </p>
                 
             </div>
 
             <hr class="rounded">
             <div class="rows">
-                <h2 class="title is-3">Generalization to Unseen Objects</h2>
-
-                <div class="columns">
-                    <div class="column has-text-centered">
-                        <div class="select is-rounded">
-                            <select id="bimanual-video-menu" onchange="updateBimanual()">
-          <option value="circle" selected="selected">Circle (Unseen)</option>
-          <option value="doublesquare">Double Square (Unseen)</option>
-          <option value="oval">Oval (Unseen)</option>
-          <option value="3prong">3prong (Unseen)</option>
-          <option value="hexagon">Hexagon (Seen)</option>
-          <option value="star">Star (Unseen)</option>
-          </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="columns">
-                    <div class="column has-text-centered">
-                        <p style="text-align:center;">
-                            <video id="bimanual-video" width="100%" height="100%" controls autoplay loop muted>
-            <source src="media/videos/1_circle.mp4" type="video/mp4">
-          </video>
-                        </p>
-                    </div>
-                </div>
+                <h2 class="title is-3">Citations</h2>
+                <p class="content has-text-justified">
+                    If you find our work useful in your research, please consider citing:
+                    <br>
+                    <br>
+                    <pre>
             </div>
 
     </section>
