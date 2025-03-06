@@ -117,10 +117,10 @@
     </section>
 
     <div class="buttons is-centered">
-        <a class="button is-primary" href="https://arxiv.org/abs/2401.13231" target="_blank">Arxiv</a>
-        <!-- <a class="button is-info" href="https://twitter.com/vincesitzmann/status/1750571777091342624" target="_blank">Twitter</a> -->
-        <a class="button is-link" href="https://qianzhong-chen.github.io/gradnav.github.io/" target="_blank">Code (coming soon)</a>
+        <a class="button is-primary is-fullwidth" href="https://arxiv.org/abs/2401.13231" target="_blank">Arxiv</a>
+        <a class="button is-link is-fullwidth" href="https://qianzhong-chen.github.io/gradnav.github.io/" target="_blank">Code (coming soon)</a>
     </div>
+    
     
     
 
@@ -181,8 +181,8 @@
             <hr class="rounded">
             <div class="rows">
                 <h2 class="title is-3">Overview of GRaD-Nav</h2>
-                <div class="column1 is-centered">
-                    <img src="media/figures/model_structure.png" alt="arch-imag" style="width:70%">
+                <div class="column1 has-text-centered">
+                    <img src="media/figures/model_structure.png" alt="arch-imag" style="width:80%">
                 </div>
                 <p class="content has-text-justified">
                     Our GRaD-Nav architecture combines a visual+dynamics context encoder (CENet) within an 
@@ -197,17 +197,19 @@
                 <h2 class="title is-3">Results of FAST-Splat</h2>
 
                 <h4 class="title is-4">Sample Efficiency</h4>
-                <div class="column1 is-centered">
+                <div class="column1 has-text-centered">
                     <img src="media/figures/algo_benchmark_smooth.png" alt="arch-imag" style="width:70%">
                 </div>
 
                 <p class="content has-text-justified">
                     Sample efficiency and wall-clock time comparison
                     benchmark of different algorithms on drone's vision-based
-                    end-to-end navigation policy training.
+                    end-to-end navigation policy training. Our method achieves
+                    over 300% sample efficiency and uses only 20% of training
+                    time to deliver a better policy compared with current RL algoruthms.
                 </p>
                 
-                <h4 class="title is-4">Long episode navigation results</h4>
+                <h4 class="title is-4">Long-episodes navigation results</h4>
                 <div class="column1">
                     <img src="media/figures/gs_traj_plot_archive.png" alt="arch-imag" style="width:100%">
                 </div>
